@@ -38,6 +38,7 @@ If you are more curious, you could find our Notion documentation bellow.
 To start this project, you have to use the command `docker-compose up --build`.
 
 ⚠ 42 authentication will not work because you need API keys.
+⚠ This is a student project, some things could be outdated.
 
 ## Our documentation:
 

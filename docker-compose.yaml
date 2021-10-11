@@ -30,7 +30,7 @@ services:
     container_name: frontend_app
 
   db:
-    image: postgres:13-alpine
+    image: arm32v7/postgres:13-alpine
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -45,7 +45,7 @@ services:
     container_name: db_app
 
   pgadmin:
-    image: dpage/pgadmin4
+    image: biarms/pgadmin4
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@admin.com
       PGADMIN_DEFAULT_PASSWORD: root

@@ -1,12 +1,30 @@
 version: '3'
 
 services:
+  nginx:
+    image: nginx:1.15-alpine
+    ports:
+      - "80:80"
+      - "443:443"
+      - "3000:3000"
+    volumes:
+      - ./data_nginx/nginx:/etc/nginx/conf.d
+      - ./data_nginx/certbot/conf:/etc/letsencrypt
+      - ./data_nginx/certbot/www:/var/www/certbot
+    networks:
+      - webapp
+
+  certbot:
+    image: certbot/certbot:arm32v6-v1.18.0
+    volumes:
+      - ./data_nginx/certbot/conf:/etc/letsencrypt
+      - ./data_nginx/certbot/www:/var/www/certbot
   api:
     build:
       context: ./docker/
       dockerfile: Dockerfile-backend
     ports:
-      - "3000:3000"
+      - "3001:3001"
     volumes:
       - ./backend:/app_backend
       - ./upload/:/upload
